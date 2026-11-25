@@ -88,3 +88,21 @@ jobs:
           exit-code: "1"
           # Added to remove the blocker of unpatched OS CVEs, as that is not the main focus of the project
           ignore-unfixed: "true"
+      #ghcr login
+      - name: Log in to GitHub Container Registry
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      #tag image and push
+      - name: Tag and push verified image to GHCR
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          IMAGE_BASE="ghcr.io/${{ github.repository_owner }}/idp-sample-service"
+          docker tag idp-sample-service:candidate "${IMAGE_BASE}:sha-${{ github.sha }}"
+          docker tag idp-sample-service:candidate "${IMAGE_BASE}:latest"
+          docker push "${IMAGE_BASE}:sha-${{ github.sha }}"
+          docker push "${IMAGE_BASE}:latest"
