@@ -9,7 +9,9 @@ COPY requirements.txt .
 RUN python -m venv /opt/venv && \
     /opt/venv/bin/pip install --no-cache-dir --upgrade pip && \
     /opt/venv/bin/pip install --no-cache-dir -r requirements.txt && \
-    /opt/venv/bin/pip uninstall -y setuptools || true
+    /opt/venv/bin/pip uninstall -y setuptools || true && \
+    rm -f /opt/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt \
+          /opt/venv/lib/python3.12/site-packages/pip/_vendor/bom.cdx.json
 
 FROM python:3.12-slim
 
