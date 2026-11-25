@@ -73,9 +73,9 @@ jobs:
           tags: "idp-sample-service:ci"
           load: true
           push: false
-          no-cache: "true"
-          #cache-from: "type=gha"
-          #cache-to: "type=gha,mode=max"
+          #no-cache: "true"
+          cache-from: "type=gha"
+          cache-to: "type=gha,mode=max"
       - name: Inspect installed packages in image
         run: docker run --rm --entrypoint pip idp-sample-service:ci list
 
