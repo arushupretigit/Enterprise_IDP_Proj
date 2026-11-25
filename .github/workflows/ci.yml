@@ -83,7 +83,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: "image"
-          image-ref: "idp-sample-service:ci"
+          image-ref: "idp-sample-service:candidate"
           severity: "HIGH,CRITICAL"
           exit-code: "1"
           # Added to remove the blocker of unpatched OS CVEs, as that is not the main focus of the project
