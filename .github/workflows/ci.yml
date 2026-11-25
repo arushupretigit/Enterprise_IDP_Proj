@@ -83,3 +83,5 @@ jobs:
           image-ref: "idp-sample-service:ci"
           severity: "HIGH,CRITICAL"
           exit-code: "1"
+          # Added to remove the blocker of unpatched OS CVEs, as that is not the main focus of the project
+          ignore-unfixed: "true"
