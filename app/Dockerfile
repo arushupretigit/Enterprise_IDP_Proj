@@ -10,7 +10,8 @@ RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
-    pip uninstall -y setuptools || true
+    pip uninstall -y setuptools || true && \
+    rm -rf /usr/local/lib/python3.12/ensurepip/_bundled/*setuptools*
 
 COPY main.py .
 
