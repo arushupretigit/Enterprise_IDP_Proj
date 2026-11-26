@@ -16,3 +16,15 @@ module "dev_cluster" {
     }
   ]
 }
+
+module "dev_baseline" {
+  source = "../../modules/cluster_baseline"
+
+  environment   = "dev"
+  app_namespace = "app-dev"
+
+  cpu_quota_limit    = "4"
+  memory_quota_limit = "4Gi"
+
+  depends_on = [module.dev_cluster]
+}
