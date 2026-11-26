@@ -1,7 +1,7 @@
 module "dev_cluster" {
   source       = "../../modules/kind_cluster"
   cluster_name = "idp-dev"
-  worker_count = 1
+  worker_count = 1 #in dev
 
   extra_port_mappings = [
     {
