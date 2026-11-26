@@ -1,1 +1,38 @@
+# Local .terraform directories (provider/module cache)
+**/.terraform/*
+.terraform.d/
 
+# State files (contain sensitive resource information, never commit)
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# State lock info files
+.terraform.tfstate.lock.info
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable files (may contain passwords, keys, etc.; use .tfvars.example instead)
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+!*.tfvars.json.example
+
+# Plan output files (may contain sensitive values)
+*.tfplan
+*tfplan*
+
+# Local override files (not committed to version control)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration files
+.terraformrc
+terraform.rc
+
+# Terragrunt cache (if applicable)
+.terragrunt-cache/
