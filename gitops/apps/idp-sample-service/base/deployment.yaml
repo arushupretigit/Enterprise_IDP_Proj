@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idp-sample-service
+  labels:
+    app: idp-sample-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: idp-sample-service
+  template:
+    metadata:
+      labels:
+        app: idp-sample-service
+    spec:
+      serviceAccountName: idp-sample-service-sa
+      containers:
+        - name: idp-sample-service
+          image: ghcr.io/arushupretigit/idp-sample-service
+          ports:
+            - containerPort: 8000
+              name: http
