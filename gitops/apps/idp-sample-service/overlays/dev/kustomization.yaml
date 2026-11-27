@@ -4,17 +4,17 @@ kind: Kustomization
 namespace: app-dev
 
 resources:
-  - ../../base
+- ../../base
 
 labels:
-  - pairs:
-      environment: dev
-    includeSelectors: false
+- pairs:
+    environment: dev
 
 replicas:
-  - name: idp-sample-service
-    count: 1
+- count: 1
+  name: idp-sample-service
 
 images:
-  - name: ghcr.io/arushupretigit/idp-sample-service
-    newTag: "latest"
+- name: ghcr.io/arushupretigit/idp-sample-service
+  newName: ghcr.io/arushupretigit/idp-sample-service
+  newTag: sha-8b89c71097c43aeaba1ef9e2a33a33967ae0fb06
