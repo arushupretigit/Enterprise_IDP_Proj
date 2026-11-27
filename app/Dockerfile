@@ -13,6 +13,10 @@ RUN python -m venv /opt/venv && \
     rm -f /opt/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt \
           /opt/venv/lib/python3.12/site-packages/pip/_vendor/bom.cdx.json
 
+RUN apt-get update \
+    && apt-get upgrade -y --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+    
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
